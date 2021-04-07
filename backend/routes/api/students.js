@@ -2,10 +2,11 @@ const express = require('express');
 const {check, validationResult} = require('express-validator')
 const router = express.Router();
 
-const User = require('../../models/thirdParty');
+const User = require('../../models/students');
 
-router.post("/" ,[
-    check('OrgName', 'Organization name is required').notEmpty(),
+router.post('/' ,[
+    check('firstName', 'First name is required').notEmpty(),
+    check('lastName', 'Last name is required').notEmpty(),
     check('email', 'Please check for email').isEmail(),
     check('password', 'Please check for password').notEmpty(),
   ] , async (req, res) => {
@@ -17,7 +18,7 @@ router.post("/" ,[
   }
 
   // Form Data
-  const {OrgName, email, password} = req.body;
+  const {firstName, lastName, email, password} = req.body;
 
   try {
     // Check if user exists by email
@@ -26,13 +27,13 @@ router.post("/" ,[
       return res.status(400).json({ errors: [{msg: `User with email ${email} already exists`}], success: false });
 
     // Create New User
-    user = new User({ OrgName, email, password });
+    user = new User({ firstName, lastName, email, password });
 
     // Save user to db
     await user.save();
 
     return res.json({
-      message: "Organization registered successfully",
+      message: "User registered successfully",
       success: true, 
       content: { id: user.id }
     });
@@ -52,10 +53,10 @@ router.get('/:id', async (req, res) => {
     const user = await User.findById(id);
 
     if(!user)
-      return res.status(400).json({ errors: [{msg: `Organization with id ${id} does not exists`}], success: false });
+      return res.status(400).json({ errors: [{msg: `Student with id ${id} does not exists`}], success: false });
 
     return res.status(202).json({
-      message: "Retrieve Organization by id",
+      message: "Retrieve student by id",
       success: true,
       content: user
     });

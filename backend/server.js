@@ -8,11 +8,13 @@ const app = express();
 
 connectDB();
 
+app.use(express.json({extended: false}));
+
 app.get('/', (req, res) => res.json({message: "API Running", success: true}));
 
 app.use('/api/students', students);
-app.use('/api/faculty', faculty)
-app.use('/api/thirdParty', thirdParty)
+app.use('/api/faculty', faculty);
+app.use('/api/thirdParty', thirdParty);
 
 const PORT = process.env.PORT || 2000;
 app.listen(PORT, () => {

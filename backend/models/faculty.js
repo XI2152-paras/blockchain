@@ -7,7 +7,6 @@ const facultySchema = mongoose.Schema({
     },
     lastName:{
         type:String,
-        required:true
     },
     email:{
         type:String,
@@ -17,8 +16,8 @@ const facultySchema = mongoose.Schema({
         type:String,
 
         required:true
-    },
-    // Id:{
+    }
+    // id:{
     //     type:Number,
     //     required:true
     // },

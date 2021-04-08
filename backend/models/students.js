@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const StudentsSchema = mongoose.Schema({
+const studentsSchema = mongoose.Schema({
     // rollNo: {
     //     type: Number,
     //     required: true
@@ -58,4 +58,4 @@ const StudentsSchema = mongoose.Schema({
     // }
 });
 
-module.exports = mongoose.model('students', StudentsSchema);
+module.exports = mongoose.model('students', studentsSchema);

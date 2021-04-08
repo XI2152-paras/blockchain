@@ -4,7 +4,7 @@ const router = express.Router();
 
 const User = require('../../models/faculty');
 
-router.post("/" ,[
+router.post('/' ,[
     check('firstName', 'First name is required').notEmpty(),
     check('lastName', 'Last name is required').notEmpty(),
     check('email', 'Please check for email').isEmail(),

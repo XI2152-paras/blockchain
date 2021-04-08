@@ -24,7 +24,7 @@ router.post('/' ,[
     // Check if user exists by email
     let user = await User.findOne({ email })
     if(user)
-      return res.status(400).json({ errors: [{msg: `User with email ${email} already exists`}], success: false });
+      return res.status(400).json({ errors: [{msg: `Student with email ${email} already exists`}], success: false });
 
     // Create New User
     user = new User({ firstName, lastName, email, password });
@@ -33,7 +33,7 @@ router.post('/' ,[
     await user.save();
 
     return res.json({
-      message: "User registered successfully",
+      message: "Student registered successfully",
       success: true, 
       content: { id: user.id }
     });
@@ -43,7 +43,6 @@ router.post('/' ,[
     return res.status(500).send('Server error');
   }
 });
-
 
 router.get('/:id', async (req, res) => {
   const id = req.params.id;

@@ -12,7 +12,7 @@ const thirdPartySchema = mongoose.Schema({
     password:{
         type:String,
         required:true
-    },
+    }
     // orgAddress:{
     //     type:String,
     //     required:true

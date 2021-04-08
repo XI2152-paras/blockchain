@@ -66,4 +66,14 @@ router.get('/:id', async (req, res) => {
   }
 })
 
+router.get('/', (req, res) => {
+  User.find()
+      .then((result)=>{
+          res.send(result);
+      })
+      .catch((err)=>{
+          console.log(err);
+      });
+});
+
 module.exports = router;
